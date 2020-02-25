@@ -10,12 +10,12 @@
   </thead>
 
   <tbody>
-    <% @contacts.each do |contact| %>
-      
-    <% end %>
+    
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Contact', new_contact_path %>
+<a class="btn btn-primary" href="/contacts/new">Contact form with recaptcha</a>
+<a class="btn btn-primary" href="/contacts/form">Contact form with invisible recaptcha</a>
+
