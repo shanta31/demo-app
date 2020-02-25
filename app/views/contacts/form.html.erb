@@ -1,0 +1,68 @@
+<%= form_for @contact, url: form_submit_contacts_path, method: :post, :html=> {name:'new-contact'} do |form| %>
+<%binding.pry%>
+  <% if @contact.errors.any? %>
+  <div id="error_explanation">
+  <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+  <ul>
+  <% @contact.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+  </div>
+  <% end %>
+  <div class="mobile-margin">
+    <h1 class="text-center"><%= t('contact.mail_us')%></h1>
+  </div>
+  <span class="underline"></span>
+  <div class="row">
+    <div class="col-lg-6 col-md-6">
+      <div class="form-group">
+        <%= form.text_field :name, class: "form-control bg-transparent", placeholder: 'Name', required: true %>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6">
+      <div class="form-group">
+        <%= form.email_field :email, class: "form-control bg-transparent", placeholder: 'Email', required: true %>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6">
+      <div class="form-group">
+        <%= form.text_field :organization, class: "form-control bg-transparent", placeholder:'Organization', required: true %>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6">
+      <div class="form-group">
+        <%= form.number_field :phone, class: "form-control bg-transparent", placeholder: 'Phone', required: true %>
+      </div>
+    </div>
+
+    <!-- <div id="RecaptchaField1"></div> -->
+    <!-- <div class="g-recaptcha" id="optional-id"></div> -->
+    <div class="col-lg-12">
+      <div class="form-group">
+        <%= form.invisible_captcha :subtitle %>
+        <%= form.submit class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+
+<script type="text/javascript" charset="utf-8">
+    var onloadCallback = function() {
+        var recaptchas = document.querySelectorAll('div[class=g-recaptcha]');
+
+        for( i = 0; i < recaptchas.length; i++) {
+            grecaptcha.render( recaptchas[i].id, {
+            'sitekey' : '6LdjDNwUAAAAAGH2cSPICK_o9lfEgbCBQJG4Uof7',
+            });
+        }
+    }
+</script>
+<!-- <script type="text/javascript">
+    var CaptchaCallback = function() {
+        grecaptcha.render('RecaptchaField1', {'sitekey' : '6LdjDNwUAAAAAGH2cSPICK_o9lfEgbCBQJG4Uof7'});
+    };
+</script> -->

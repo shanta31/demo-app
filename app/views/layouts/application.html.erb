@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<% if notice %>
+    <div class="container-fluid">
+      <div class="position-absolute w-75 z-index-alert">
+        <div class="alert alert-primary alert-dismissible alert-position" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= notice %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <% if alert %>
+    <div class="container-fluid">
+      <div class="position-absolute w-75 z-index-alert">
+        <div class="alert alert-danger alert-dismissible alert-position" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= alert %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <%= flash[:error] %>
+    <%= yield %>
+  </body>
+</html>
